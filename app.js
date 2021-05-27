@@ -68,3 +68,22 @@ const felines = R.filter(R.propEq('species', 'felinos'), animals);
 
 console.log(felines);
 
+//pipe 2 with prop and includes
+
+const categories = {
+    tags: ['phone', 'smartphone', 'smartwatch'],
+    prices: [1800, 4553, 500]
+}
+
+const otherCategories = {
+    tags: ['bicicle', 'car', 'board game']
+}
+
+const piping = R.pipe(R.prop('tags'), R.includes('smartwatch'));
+
+console.log(piping(otherCategories));
+
+//anyPass, isNil, isEmpty, not
+const isAuthenticated = R.pipe(R.anyPass([R.isNil, R.isEmpty]), R.not);
+const user = "loreto";
+console.log("debería ser false cuando no hay usuario, debería ser true cuando sí hay usuario: " + isAuthenticated(user));
